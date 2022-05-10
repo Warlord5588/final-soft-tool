@@ -1,23 +1,23 @@
 <template>
   <div id="app">
     <div>
-      <h1>TABLE INFORMATION STUDENT</h1>
+      <h1>TABLE INFORMATION MOCKUP DATABASE</h1>
     </div>
     <!-- ตาราง -->
     <div class="table">
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>StudentName</th>
-            <th>AGE</th>
+            <th>Register ID</th>
+            <th>Telephone</th>
+            <th>OTP</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="student in students" :key= "student.student_id">
-            <th>{{student.student_id}}</th>
-            <td>{{student.student_name}}</td>
-            <td>{{student.student_age}}</td>
+          <tr v-for="register in registers" :key= "register.register_id">
+            <th>{{register.register_id}}</th>
+            <td>{{register.telephone}}</td>
+            <td>{{register.otp_number}}</td>
           </tr>
         </tbody>
       </table>
@@ -30,7 +30,7 @@ import axios from "axios";
 export default {
   data(){
     return{
-    students:[]
+    registers:[]
     }
   },
   mounted() {
@@ -38,7 +38,7 @@ export default {
       .get("http://localhost:5000")
       .then((response) => {
         console.log(response)
-        this.students= response.data.rows
+        this.registers= response.data.rows
         });
 
   },
